@@ -1,19 +1,20 @@
-package me.hex.entityserializer.core;
+package me.hex.chunkserializer.core;
 
-import me.hex.entityserializer.core.interfaces.Factory;
+import me.hex.chunkserializer.core.interfaces.Factory;
+import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Entity;
+import org.bukkit.World;
 import org.bukkit.structure.Structure;
 import org.bukkit.structure.StructureManager;
 
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Implementation of Factory, a Structure Factory that produces Structures.
  */
-public class StructureFactory implements Factory<Entity, NamespacedKey, Structure> {
+public class StructureFactory implements Factory<Chunk, NamespacedKey, Structure> {
 
     private final StructureManager manager;
 
@@ -23,23 +24,33 @@ public class StructureFactory implements Factory<Entity, NamespacedKey, Structur
 
     /**
      * IMPORTANT NOTE: DO NOT USE THIS METHOD, IT'S FOR THE API INTERNALS.
-     * Creates a structure around the entity.
+     * Creates a structure around the Chunk.
      * Note that this method uses 1.17.1 Structures API.
      *
-     * @param entity Entity to create a structure around.
+     * @param chunk Chunk to create a structure around.
      * @return Structure created..
      */
     @Override
-    public Structure create(Entity entity, NamespacedKey keyToStruct, boolean removeAfter) {
+    public Structure create(Chunk chunk, NamespacedKey keyToStruct, boolean includeEntities) {
 
-        Structure struct = manager.createStructure();
+        final World world = chunk.getWorld();
+        final int minX = chunk.getX() << 4;
+        final int minZ = chunk.getZ() << 4;
+        final int minY = world.getMinHeight();
+        final int maxX = minX | 15;
+        final int maxY = world.getMaxHeight();
+        final int maxZ = minZ | 15;
 
-        struct.fill(entity.getLocation(), entity.getLocation()
-                .add(1, 1, 1), true);
+        final Location minLocation = new Location(world, minX, minY, minZ);
+        final Location maxLocation = new Location(world, maxX, maxY, maxZ);
+
+        final Structure struct = manager.createStructure();
+
+        struct.fill(minLocation, maxLocation, includeEntities);
 
         manager.registerStructure(keyToStruct, struct);
 
-        CompletableFuture<Boolean> future = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture.supplyAsync(() -> {
             try {
                 manager.saveStructure(keyToStruct, struct);
                 return true;
@@ -47,18 +58,7 @@ public class StructureFactory implements Factory<Entity, NamespacedKey, Structur
                 e.printStackTrace();
                 return false;
             }
-        }).toCompletableFuture();
-
-        try {
-            if (removeAfter && future.get()) {
-                future.thenApply((e) -> {
-                    entity.remove();
-                    return null;
-                });
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+        });
 
         return struct;
     }

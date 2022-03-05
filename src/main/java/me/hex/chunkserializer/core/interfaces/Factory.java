@@ -1,4 +1,4 @@
-package me.hex.entityserializer.core.interfaces;
+package me.hex.chunkserializer.core.interfaces;
 
 import java.util.concurrent.CompletableFuture;
 

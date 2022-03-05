@@ -1,7 +1,7 @@
-package me.hex.entityserializer;
+package me.hex.chunkserializer;
 
-import me.hex.entityserializer.api.EntityHolder;
-import me.hex.entityserializer.core.StructureFactory;
+import me.hex.chunkserializer.api.ChunkHolder;
+import me.hex.chunkserializer.core.StructureFactory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.structure.StructureManager;
 
@@ -10,10 +10,10 @@ import java.util.Random;
 /**
  * API's Main class, holding the core and essentials of the library.
  */
-public final class EntitySerializer {
+public final class ChunkSerializer {
 
     private JavaPlugin plugin;
-    private EntityHolder entityHolder;
+    private ChunkHolder ChunkHolder;
     private StructureFactory factory;
     private Random random;
     private StructureManager manager;
@@ -59,10 +59,10 @@ public final class EntitySerializer {
     /**
      * you should use this to serialize, and to deserialize.
      *
-     * @return EntityHolder Object.
+     * @return ChunkHolder Object.
      */
-    public EntityHolder getEntityHolder() {
-        return entityHolder;
+    public ChunkHolder getChunkHolder() {
+        return ChunkHolder;
     }
 
     /**
@@ -72,7 +72,7 @@ public final class EntitySerializer {
     private void initialize() {
         manager = plugin.getServer().getStructureManager();
         factory = new StructureFactory(manager);
-        entityHolder = new EntityHolder(manager, factory);
+        ChunkHolder = new ChunkHolder(manager, factory);
         random = new Random();
     }
 
