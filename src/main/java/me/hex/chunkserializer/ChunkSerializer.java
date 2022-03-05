@@ -13,7 +13,7 @@ import java.util.Random;
 public final class ChunkSerializer {
 
     private JavaPlugin plugin;
-    private ChunkHolder ChunkHolder;
+    private ChunkHolder chunkHolder;
     private StructureFactory factory;
     private Random random;
     private StructureManager manager;
@@ -62,7 +62,7 @@ public final class ChunkSerializer {
      * @return ChunkHolder Object.
      */
     public ChunkHolder getChunkHolder() {
-        return ChunkHolder;
+        return chunkHolder;
     }
 
     /**
@@ -72,7 +72,7 @@ public final class ChunkSerializer {
     private void initialize() {
         manager = plugin.getServer().getStructureManager();
         factory = new StructureFactory(manager);
-        ChunkHolder = new ChunkHolder(manager, factory);
+        chunkHolder = new ChunkHolder(manager, factory);
         random = new Random();
     }
 
