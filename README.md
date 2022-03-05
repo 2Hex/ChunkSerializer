@@ -53,11 +53,11 @@ implementation 'com.github.2Hex:ChunkSerializer:Tag'
 First, you have to create an object of ChunkSerializer in your onEnable:
 
 ```Java
-ChunkSerializer entitySerializer = new ChunkSerializer();
+ChunkSerializer chunkSerializer = new ChunkSerializer();
 chunkSerializer.setPlugin(this);
 ```
 
-Then make a variable, referencing the class EntityHolder:
+Then make a variable, referencing the class ChunkHolder:
 
 ```Java
 private static ChunkHolder holder;
