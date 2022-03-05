@@ -1,5 +1,5 @@
 # ChunkSerializer
-[![](https://jitpack.io/v/2Hex/ChunkSerializer.svg)](https://jitpack.io/#2Hex/EntitySerializer)
+[![](https://jitpack.io/v/2Hex/ChunkSerializer.svg)](https://jitpack.io/#2Hex/ChunkSerializer)
 
 Serializes Chunks, Basically converting them to namespacedkeys that can be used later, not exactly serializing with its common definition.
 
@@ -7,7 +7,7 @@ Serializes Chunks, Basically converting them to namespacedkeys that can be used 
 - This will only work for 1.17.1+
 - Only use classes ChunkSerializer, and classes inside api package.
 
-Easily turn an entity into a namespacedkey of the name of your choice, then turn it back into an entity.
+Easily turn a Chunk into a namespacedkey of the name of your choice, then turn it back into an Chunk.
 
 # Installation
 **For MAVEN:**
@@ -80,7 +80,7 @@ Then later in whatever class, you can use
 ```Java
 	NamespacedKey namespacedkey = new NamespacedKey(pluginInstance, "your-key-here");
         YourMainClass.getHolder().serialize(chunk, namespackedkey);
-        ChunkResult entityDeserialized = YourMainClass.getHolder().deserialize(namespacedkey);
+        ChunkResult chunkDeserialized = YourMainClass.getHolder().deserialize(namespacedkey);
 ```
 **Note that you should have a unique namespacedkey for each unique chunk serialization.**
 
