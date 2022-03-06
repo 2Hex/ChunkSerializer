@@ -7,6 +7,7 @@ public interface ChunkHolder {
 
     /**
      * Spawns and gets the chunk.
+     *
      * @param location Where to spawn
      * @return the chunk spawned
      */
@@ -14,6 +15,7 @@ public interface ChunkHolder {
 
     /**
      * Spawns the chunk.
+     *
      * @param location Where to spawn
      */
     void spawn(Location location);

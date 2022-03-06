@@ -14,6 +14,7 @@ public interface ChunkSerializer {
 
     /**
      * Creates an instance of ChunkSerializer.
+     *
      * @param plugin Your main class.
      * @return the instance of ChunkSerializer created.
      */
@@ -34,6 +35,7 @@ public interface ChunkSerializer {
 
     /**
      * Use this to de/serialize, destroy a serialization
+     *
      * @return The Serializer
      */
     Serializer<Chunk, NamespacedKey, ChunkHolder> getChunkHandler();
