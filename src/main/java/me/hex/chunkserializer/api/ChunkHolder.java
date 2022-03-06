@@ -23,7 +23,7 @@ public class ChunkHolder implements Serializer<Chunk, NamespacedKey, ChunkResult
     }
 
     /**
-     * Serializes an Chunk to Name-spaced Key specified.
+     * Serializes a Chunk to Name-spaced Key specified.
      * Note that this method uses 1.17.1 Structures API.
      * @param toSerialize Chunk to serialize.
      * @param serialKey     Key to use for later deserializing.
@@ -41,7 +41,7 @@ public class ChunkHolder implements Serializer<Chunk, NamespacedKey, ChunkResult
     }
 
     /**
-     * Serializes an Chunk to Name-spaced Key specified.
+     * Serializes a Chunk to Name-spaced Key specified.
      * Note that this method uses 1.17.1 Structures API.
      *
      * @param serialKey     Key to use for later deserializing.
@@ -54,7 +54,7 @@ public class ChunkHolder implements Serializer<Chunk, NamespacedKey, ChunkResult
     }
 
     /**
-     * Serializes an Chunk to Name-spaced Key specified.
+     * Serializes a Chunk to Name-spaced Key specified.
      * Note that this method uses 1.17.1 Structures API.
      *
      * @param locationInTheChunk location from the chunk.
@@ -67,7 +67,7 @@ public class ChunkHolder implements Serializer<Chunk, NamespacedKey, ChunkResult
     }
 
     /**
-     * Deserializes an Chunk from its corresponding Name-spaced Key specified.
+     * Deserializes a Chunk from its corresponding Name-spaced Key specified.
      * Note that this method uses 1.17.1 Structures API.
      *
      * @param toDeserialize Key corresponding to the Chunk serialized.
