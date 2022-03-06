@@ -1,5 +1,6 @@
 package me.hex.chunkserializer;
 
+import com.google.common.base.Preconditions;
 import me.hex.chunkserializer.api.ChunkHolder;
 import me.hex.chunkserializer.core.StructureFactory;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +17,8 @@ public final class ChunkSerializer {
     private final ChunkHolder chunkHolder;
 
     public ChunkSerializer(JavaPlugin plugin) {
+        Preconditions.checkArgument(plugin != null);
+
         this.plugin = plugin;
         StructureManager manager = plugin.getServer().getStructureManager();
         this.chunkHolder = new ChunkHolder(manager, new StructureFactory(manager));
