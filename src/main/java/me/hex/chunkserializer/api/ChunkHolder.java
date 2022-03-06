@@ -2,40 +2,19 @@ package me.hex.chunkserializer.api;
 
 import org.bukkit.Chunk;
 import org.bukkit.Location;
-import org.bukkit.block.structure.Mirror;
-import org.bukkit.block.structure.StructureRotation;
-import org.bukkit.structure.Structure;
 
-import java.util.Objects;
-import java.util.Random;
-
-public class ChunkHolder {
-
-    private final Structure structure;
-
-    public ChunkHolder(Structure structure) {
-        this.structure = structure;
-    }
+public interface ChunkHolder {
 
     /**
-     * Spawns the Chunk, and returns it.
-     *
-     * @param location Location to spawn Chunk at.
-     * @return Chunk spawned.
+     * Spawns and gets the chunk.
+     * @param location Where to spawn
+     * @return the chunk spawned
      */
-    public Chunk spawnAndGet(Location location) {
-        spawn(location);
-        return Objects.requireNonNull(location.getWorld()).getChunkAt(location);
-    }
+    Chunk spawnAndGet(Location location);
 
     /**
-     * Spawns the Chunk at the given Location.
-     *
-     * @param loc Location to spawn Chunk at.
+     * Spawns the chunk.
+     * @param location Where to spawn
      */
-    public void spawn(Location loc) {
-        structure.place(loc, true, StructureRotation.NONE, Mirror.NONE,
-                0, 0f, new Random());
-    }
-
+    void spawn(Location location);
 }

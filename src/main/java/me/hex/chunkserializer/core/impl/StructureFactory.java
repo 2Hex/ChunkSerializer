@@ -1,4 +1,4 @@
-package me.hex.chunkserializer.core;
+package me.hex.chunkserializer.core.impl;
 
 import me.hex.chunkserializer.core.interfaces.Factory;
 import org.bukkit.Chunk;
@@ -27,9 +27,9 @@ public class StructureFactory implements Factory<Chunk, NamespacedKey, Structure
      * Creates a structure around the Chunk.
      * Note that this method uses 1.17.1 Structures API.
      *
-     * @param chunk Chunk to create a structure around.
+     * @param chunk           Chunk to create a structure around.
      * @param includeEntities whether to include entities or not
-     * @param keyToStruct key used for structure.
+     * @param keyToStruct     key used for structure.
      * @return Structure created..
      */
     @Override

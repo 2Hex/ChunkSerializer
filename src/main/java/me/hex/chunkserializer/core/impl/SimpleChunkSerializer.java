@@ -1,25 +1,20 @@
-package me.hex.chunkserializer;
+package me.hex.chunkserializer.core.impl;
 
-import com.google.common.base.Preconditions;
 import me.hex.chunkserializer.api.ChunkHandler;
-import me.hex.chunkserializer.core.StructureFactory;
+import me.hex.chunkserializer.api.ChunkSerializer;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.structure.StructureManager;
 
 /**
  * API's Main class, holding the core and essentials of the library.
  */
-public final class ChunkSerializer {
+public final class SimpleChunkSerializer implements ChunkSerializer {
 
     private final JavaPlugin plugin;
     private final ChunkHandler chunkHandler;
 
-    public ChunkSerializer(JavaPlugin plugin) {
-        Preconditions.checkArgument(plugin != null);
-
+    public SimpleChunkSerializer(JavaPlugin plugin, ChunkHandler handler) {
         this.plugin = plugin;
-        StructureManager manager = plugin.getServer().getStructureManager();
-        this.chunkHandler = new ChunkHandler(manager, new StructureFactory(manager));
+        this.chunkHandler = handler;
     }
 
     /**
@@ -27,6 +22,8 @@ public final class ChunkSerializer {
      *
      * @return Main instance of User's plugin.
      */
+
+    @Override
     public JavaPlugin getPlugin() {
         return plugin;
     }
@@ -38,7 +35,8 @@ public final class ChunkSerializer {
      * @return ChunkHandler Object.
      */
 
-    public ChunkHandler getChunkHolder() {
+    @Override
+    public ChunkHandler getChunkHandler() {
         return chunkHandler;
     }
 
