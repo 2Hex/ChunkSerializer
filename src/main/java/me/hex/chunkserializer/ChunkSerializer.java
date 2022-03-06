@@ -1,12 +1,10 @@
 package me.hex.chunkserializer;
 
 import com.google.common.base.Preconditions;
-import me.hex.chunkserializer.api.ChunkHolder;
+import me.hex.chunkserializer.api.ChunkHandler;
 import me.hex.chunkserializer.core.StructureFactory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.structure.StructureManager;
-
-import java.util.Random;
 
 /**
  * API's Main class, holding the core and essentials of the library.
@@ -14,14 +12,14 @@ import java.util.Random;
 public final class ChunkSerializer {
 
     private final JavaPlugin plugin;
-    private final ChunkHolder chunkHolder;
+    private final ChunkHandler chunkHandler;
 
     public ChunkSerializer(JavaPlugin plugin) {
         Preconditions.checkArgument(plugin != null);
 
         this.plugin = plugin;
         StructureManager manager = plugin.getServer().getStructureManager();
-        this.chunkHolder = new ChunkHolder(manager, new StructureFactory(manager));
+        this.chunkHandler = new ChunkHandler(manager, new StructureFactory(manager));
     }
 
     /**
@@ -37,11 +35,11 @@ public final class ChunkSerializer {
     /**
      * you should use this to serialize, and to deserialize.
      *
-     * @return ChunkHolder Object.
+     * @return ChunkHandler Object.
      */
 
-    public ChunkHolder getChunkHolder() {
-        return chunkHolder;
+    public ChunkHandler getChunkHolder() {
+        return chunkHandler;
     }
 
 
