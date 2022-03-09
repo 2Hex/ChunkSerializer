@@ -1,5 +1,6 @@
 # ChunkSerializer
 [![](https://jitpack.io/v/2Hex/ChunkSerializer.svg)](https://jitpack.io/#2Hex/ChunkSerializer)
+[![CodeFactor](https://www.codefactor.io/repository/github/2hex/chunkserializer/badge)](https://www.codefactor.io/repository/github/2hex/chunkserializer)
 
 Serializes Chunks, Basically converting them to namespacedkeys that can be used later, not exactly serializing with its common definition.
 
