@@ -79,15 +79,15 @@ public static ChunkHandler getHandler() {
 Then later in whatever class, you can use
 ```Java
 	NamespacedKey namespacedkey = new NamespacedKey(pluginInstance, "your-key-here");
-        YourMainClass.getHolder().serialize(chunk, namespackedkey);
-        ChunkResult chunkDeserialized = YourMainClass.getHolder().deserialize(namespacedkey);
+        YourMainClass.getHandler().serialize(chunk, namespackedkey);
+        ChunkHolder chunkDeserialized = YourMainClass.getHandler().deserialize(namespacedkey);
 ```
 **Note that you should have a unique namespacedkey for each unique chunk serialization.**
 
-You can invoke `spawnAndGet()` (which will return the chunk and spawn it) on the ChunkResult later, or `spawn`.
+You can invoke `spawnAndGet()` (which will return the chunk and spawn it) on the ChunkHolder later, or `spawn`.
 
 
 And to Destroy a serialization (Remove its access, and its place in server storage) Use:
 ```Java
-YourMainClass.getHolder().destroy(namespacedkey)
+YourMainClass.getHandler().destroy(namespacedkey)
 ```
